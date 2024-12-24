@@ -1,0 +1,16 @@
+var express = require('express')
+const connect  = require("./Config/connect")
+const cors = require('cors')
+var app = express()
+const patientRoute = require('./Routes/patientRoutes')
+const adminRoutes = require("./Routes/adminRoutes")
+const doctorRoutes = require('./Routes/doctorRoutes')
+app.use(cors())
+app.use(express.json())
+app.use("/patient",patientRoute)
+app.use("/admin",adminRoutes)
+app.use("/doctor",doctorRoutes)
+app.listen(8000,() =>
+{
+    console.log('port is running at 8000')
+})
